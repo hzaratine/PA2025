@@ -1,0 +1,137 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOLjblWl4WKefBZ0AW//z67",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/hzaratine/PA2025/blob/main/operadores\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 1. Verificar se o número é par ou ímpar\n",
+        "numero = int(input(\"Digite um número: \"))\n",
+        "resultado = [\"ÍMPAR\", \"PAR\"][(numero % 2 == 0)]  # Índice 1 para \"PAR\" e 0 para \"ÍMPAR\"\n",
+        "print(f\"O número {numero} é {resultado}.\")\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "88aL6e6Y8rsN",
+        "outputId": "e3a00740-e6c2-4641-cde2-861b5fd79a2a"
+      },
+      "execution_count": 18,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Digite um número: 123456789123456875136514\n",
+            "O número 123456789123456875136514 é PAR.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 2. Verificar se os lados podem formar um triângulo e identificar o tipo\n",
+        "l1 = float(input(\"Digite o valor do primeiro lado: \"))\n",
+        "l2 = float(input(\"Digite o valor do segundo lado: \"))\n",
+        "l3 = float(input(\"Digite o valor do terceiro lado: \"))\n",
+        "\n",
+        "# Verificando se os lados podem formar um triângulo\n",
+        "triangulo = (l1 + l2 > l3) and (l1 + l3 > l2) and (l2 + l3 > l1)\n",
+        "\n",
+        "# Atribuindo valores para as variáveis de tipo de triângulo\n",
+        "equilatero = (l1 == l2 == l3) * triangulo\n",
+        "escaleno = (l1 != l2 and l2 != l3 and l1 != l3) * triangulo\n",
+        "isosceles = triangulo * (not equilatero and not escaleno)\n",
+        "\n",
+        "# Exibindo o resultado sem 'if' e sem expressões condicionais\n",
+        "print(f\"Pode formar um triângulo? {triangulo}\")\n",
+        "print(f\"Triângulo Equilátero? {equilatero}\")\n",
+        "print(f\"Triângulo Escaleno? {escaleno}\")\n",
+        "print(f\"Triângulo Isósceles? {isosceles}\")\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "M9jf4XRS87vW",
+        "outputId": "6cb36666-fc0b-470e-e0cd-5738542ab1b9"
+      },
+      "execution_count": 19,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Digite o valor do primeiro lado: 3\n",
+            "Digite o valor do segundo lado: 3\n",
+            "Digite o valor do terceiro lado: 3\n",
+            "Pode formar um triângulo? True\n",
+            "Triângulo Equilátero? 1\n",
+            "Triângulo Escaleno? 0\n",
+            "Triângulo Isósceles? 0\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 3. Calcular IMC\n",
+        "peso = float(input(\"Digite seu peso (kg): \"))\n",
+        "altura = float(input(\"Digite sua altura (m): \"))\n",
+        "\n",
+        "# Fórmula do IMC\n",
+        "imc = peso / (altura ** 2)\n",
+        "\n",
+        "# Usando uma lista de classificações para determinar a faixa do IMC\n",
+        "classificacoes = [\n",
+        "    \"Abaixo do peso\",       # imc < 18.5\n",
+        "    \"Peso ideal\",          # 18.5 <= imc < 24.9\n",
+        "    \"Acima do peso\",       # 25 <= imc < 29.9\n",
+        "    \"Obesidade grau 1\",    # 30 <= imc < 34.9\n",
+        "    \"Obesidade grau 2\",    # 35 <= imc < 39.9\n",
+        "    \"Obesidade grau 3\"     # imc >= 40\n",
+        "]\n",
+        "\n",
+        "# Definindo o índice da classificação com base no IMC\n",
+        "indice_classificacao = min(int(imc // 5), 5)  # Usando // para arredondar o IMC para uma faixa específica\n",
+        "classificacao = classificacoes[indice_classificacao]\n",
+        "\n",
+        "# Exibindo o resultado sem 'if' e sem expressões condicionais\n",
+        "print(f\"Seu IMC é: {imc:.2f}\")\n",
+        "print(f\"Classificação: {classificacao}\")\n"
+      ],
+      "metadata": {
+        "id": "mJBbqovl9xIm"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
